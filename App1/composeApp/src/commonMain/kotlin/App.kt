@@ -27,6 +27,8 @@ import coil3.memory.MemoryCache
 import coil3.request.CachePolicy
 import coil3.request.crossfade
 import coil3.util.DebugLogger
+import components.RoundLabeledImage
+import components.RoundLabeledImageRow
 import okio.FileSystem
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -56,6 +58,9 @@ object Phrases {
 @Preview
 fun App() {
 
+
+    val imageUrl = "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY"
+
     var currentPhrase by remember { mutableStateOf("") }
 
     MaterialTheme {
@@ -64,37 +69,41 @@ fun App() {
             getAsyncImageLoader(context)
         }
 
-        SubcomposeAsyncImage(
-            modifier = Modifier
-                .size(250.dp)
-                .padding(16.dp),
-            model = "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY",
-            contentDescription = null,
-            error = {
-                Text("Falhou caralho")
-            },
-            loading = {
-                Text("Ta carregando")
-            }
+//        SubcomposeAsyncImage(
+//            modifier = Modifier
+//                .size(250.dp)
+//                .padding(16.dp),
+//            model = "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY",
+//            contentDescription = null,
+//            error = {
+//                Text("Falhou caralho")
+//            },
+//            loading = {
+//                Text("Ta carregando")
+//            }
+//
+//        )
 
-        )
+//        RoundLabeledImage(imageUrl = imageUrl, authorName = "Aladinho")
 
-
+//        RoundLabeledImageRow()
 
 
     }
 }
 
+//fun getAsyncImageLoader(context: PlatformContext) =
+//    ImageLoader.Builder(context).memoryCachePolicy(CachePolicy.ENABLED).memoryCache {
+//        MemoryCache.Builder().maxSizePercent(context, 0.3).strongReferencesEnabled(true).build()
+//    }.diskCachePolicy(CachePolicy.ENABLED).networkCachePolicy(CachePolicy.ENABLED).diskCache {
+//        newDiskCache()
+//    }.crossfade(true).logger(DebugLogger()).build()
+//
+//fun newDiskCache(): DiskCache {
+//    return DiskCache.Builder().directory(FileSystem.SYSTEM_TEMPORARY_DIRECTORY / "image_cache")
+//        .maxSizeBytes(1024L * 1024 * 1024) // 512MB
+//        .build()
+//}
+
 fun getAsyncImageLoader(context: PlatformContext) =
-    ImageLoader.Builder(context).memoryCachePolicy(CachePolicy.ENABLED).memoryCache {
-        MemoryCache.Builder().maxSizePercent(context, 0.3).strongReferencesEnabled(true).build()
-    }.diskCachePolicy(CachePolicy.ENABLED).networkCachePolicy(CachePolicy.ENABLED).diskCache {
-        newDiskCache()
-    }.crossfade(true).logger(DebugLogger()).build()
-
-fun newDiskCache(): DiskCache {
-    return DiskCache.Builder().directory(FileSystem.SYSTEM_TEMPORARY_DIRECTORY / "image_cache")
-        .maxSizeBytes(1024L * 1024 * 1024) // 512MB
-        .build()
-}
-
+    ImageLoader.Builder(context).crossfade(true).logger(DebugLogger()).build()
