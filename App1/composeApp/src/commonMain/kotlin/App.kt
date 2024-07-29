@@ -1,4 +1,3 @@
-import Phrases.getRandomPhrase
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,33 +33,16 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
-object Phrases {
-    val randomPhrases = listOf(
-        "Life is a journey.",
-        "Love is a mystery.",
-        "Happiness is a blessing.",
-        "Friendship is a gift.",
-        "Success is a challenge.",
-        "Life seems like a mystery.",
-        "Love becomes a journey.",
-        "Happiness remains a blessing.",
-        "Friendship transforms into a challenge.",
-        "Success remains a gift."
-    )
 
-    fun getRandomPhrase(): String {
-        return randomPhrases.random()
-    }
-}
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 @Preview
-fun App() {
+fun App(
 
+) {
 
     val imageUrl = "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY"
-
     var currentPhrase by remember { mutableStateOf("") }
 
     MaterialTheme {
@@ -89,21 +71,9 @@ fun App() {
 //        RoundLabeledImageRow()
 
 
+
     }
 }
-
-//fun getAsyncImageLoader(context: PlatformContext) =
-//    ImageLoader.Builder(context).memoryCachePolicy(CachePolicy.ENABLED).memoryCache {
-//        MemoryCache.Builder().maxSizePercent(context, 0.3).strongReferencesEnabled(true).build()
-//    }.diskCachePolicy(CachePolicy.ENABLED).networkCachePolicy(CachePolicy.ENABLED).diskCache {
-//        newDiskCache()
-//    }.crossfade(true).logger(DebugLogger()).build()
-//
-//fun newDiskCache(): DiskCache {
-//    return DiskCache.Builder().directory(FileSystem.SYSTEM_TEMPORARY_DIRECTORY / "image_cache")
-//        .maxSizeBytes(1024L * 1024 * 1024) // 512MB
-//        .build()
-//}
 
 fun getAsyncImageLoader(context: PlatformContext) =
     ImageLoader.Builder(context).crossfade(true).logger(DebugLogger()).build()

@@ -52,6 +52,8 @@ kotlin {
             implementation(libs.coil.mp)
             implementation(libs.coil.network.ktor)
 
+            implementation(libs.lifecycle.viewmodel.compose)
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
