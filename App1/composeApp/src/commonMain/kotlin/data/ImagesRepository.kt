@@ -1,8 +1,11 @@
 package data
 
-class ImagesRepository {
+import network.AppNetworkDataSource
 
-    suspend fun fetchImages() {
+class ImagesRepository(
+    private val dataSource: AppNetworkDataSource
+) {
 
-    }
+    suspend fun getImages() = dataSource.getImages()
+
 }

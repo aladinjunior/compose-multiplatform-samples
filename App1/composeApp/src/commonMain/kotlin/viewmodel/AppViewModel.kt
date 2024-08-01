@@ -1,13 +1,12 @@
 package viewmodel
 
 import androidx.lifecycle.ViewModel
-import components.RoundLabeledImage
+import androidx.lifecycle.viewModelScope
 import data.ImagesRepository
 import domain.AppLabeledImage
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 
 /**
@@ -19,10 +18,13 @@ class AppViewModel(
 ) : ViewModel() {
 
     private val _labeledImages = MutableStateFlow(listOf<AppLabeledImage>())
-    val labeledImage = _labeledImages.asStateFlow()
+    val labeledImages = _labeledImages.asStateFlow()
 
 
-    fun fetchImagesData() {
+    fun getImages() = viewModelScope.launch {
+
+        _labeledImages.value = imagesRepository.getImages()
 
     }
+
 }

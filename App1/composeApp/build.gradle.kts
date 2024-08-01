@@ -11,6 +11,9 @@ plugins {
 }
 
 kotlin {
+
+    tasks.create("testClasses")
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -38,6 +41,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.androidx.activity.compose)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -57,6 +61,7 @@ kotlin {
             implementation(libs.coil.mp)
             implementation(libs.coil.network.ktor)
 
+
             implementation(libs.lifecycle.viewmodel.compose)
 
         }
@@ -71,6 +76,7 @@ kotlin {
         }
     }
 }
+
 
 android {
     namespace = "com.aladin.app1"
@@ -122,4 +128,10 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "aladin.sample.library.resources"
+    generateResClass = always
 }
