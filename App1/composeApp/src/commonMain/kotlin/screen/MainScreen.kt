@@ -5,46 +5,59 @@ import aladin.sample.library.resources.Res
 import aladin.sample.library.resources.more_images
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import components.AppTopBar
 import components.DynamicImageRow
 import components.RoundCornerImage
 
 import components.RoundLabeledImageRow
 import domain.AppLabeledImage
-import io.ktor.util.network.NetworkAddress
-import org.jetbrains.compose.resources.Resource
-import org.jetbrains.compose.resources.stringResource
+
 
 @Composable
 fun MainScreen(
     labeledImages: List<AppLabeledImage>
 ) {
     Column(
-        verticalArrangement = Arrangement.SpaceAround
+        verticalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier.fillMaxSize(),
     ) {
-        RoundLabeledImageRow(labeledImages)
-        Text(stringResource(Res.string.more_images))
+        AppTopBar()
+        Spacer(Modifier.size(8.dp))
+        RoundLabeledImageRow(
+            labeledImages = labeledImages,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(Modifier.size(8.dp))
+
+        Text(
+            "More images",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(horizontal = 12.dp)
+        )
         if (labeledImages.isNotEmpty()) {
             Column(
-                modifier = Modifier.verticalScroll(rememberScrollState())
+
             ) {
                 RoundCornerImage(labeledImages.last())
                 DynamicImageRow(labeledImages)
                 RoundCornerImage(labeledImages.first())
-//                RoundCornerImage(labeledImages.first())
-//                RoundCornerImage(labeledImages.first())
-//                RoundCornerImage(labeledImages.first())
-//                RoundCornerImage(labeledImages.first())
+
             }
 
         }
-
-
 
 
     }

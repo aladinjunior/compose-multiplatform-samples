@@ -1,10 +1,21 @@
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import coil3.ImageLoader
 import coil3.PlatformContext
 import coil3.annotation.ExperimentalCoilApi
@@ -16,7 +27,9 @@ import data.ImagesRepository
 import network.KtorAppNetwork
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import components.AppTopBar
 import screen.MainScreen
+import ui.theme.AppTheme
 import viewmodel.AppViewModel
 
 
@@ -35,17 +48,19 @@ fun App(
     viewModel.getImages()
 
 
-    MaterialTheme {
+    AppTheme {
 
         setSingletonImageLoaderFactory { context ->
             getAsyncImageLoader(context)
         }
 
         Scaffold {
-            MainScreen(labeledImages)
+            Box(
+                modifier = Modifier.verticalScroll(rememberScrollState())
+            ) {
+                MainScreen(labeledImages)
+            }
         }
-
-
 
 
     }

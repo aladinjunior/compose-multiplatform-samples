@@ -8,11 +8,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,18 +49,23 @@ fun RoundCornerImage(
             Button(
                 modifier = Modifier.align(Alignment.TopEnd).padding(12.dp),
                 onClick = {},
-                border = BorderStroke(width = 1.5.dp, color = Color.White),
+                border = BorderStroke(width = 1.dp, color = Color.White),
                 shape = RoundedCornerShape(18.dp),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent
+                    containerColor = Color.Transparent
                 )
             ) {
-                Text(text = "follow this author", color = Color.White)
+                Text(
+                    text = "follow this author",
+                    color = Color.White
+                )
+
+
             }
             Text(
                 modifier = Modifier.align(Alignment.BottomStart).padding(12.dp),
                 text = labeledImage.authorName,
-                style = MaterialTheme.typography.h4,
+                style = MaterialTheme.typography.titleSmall,
                 color = Color.White
             )
 
@@ -94,7 +99,7 @@ fun SmallerRoundCornerImage(
             Text(
                 modifier = Modifier.align(Alignment.BottomStart).padding(12.dp),
                 text = labeledImage.authorName,
-                style = MaterialTheme.typography.subtitle2,
+                style = MaterialTheme.typography.bodyMedium,
                 color = Color.White
             )
 
