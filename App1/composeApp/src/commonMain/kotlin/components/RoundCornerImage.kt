@@ -20,7 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
 import domain.AppLabeledImage
-import util.Constants.RoundSmallerImageSize
+import util.Dimens.smallerImageSize
 
 @Composable
 fun RoundCornerImage(
@@ -77,7 +77,7 @@ fun SmallerRoundCornerImage(
     labeledImage: AppLabeledImage
 ) {
     Card(
-        modifier = Modifier.size(RoundSmallerImageSize),
+        modifier = Modifier.size(smallerImageSize),
         shape = RoundedCornerShape(30.dp),
     ) {
         Box(

@@ -1,6 +1,7 @@
 package components
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.size
@@ -17,7 +18,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
 import domain.AppLabeledImage
-import util.Constants.getFirstName
+import util.Dimens.roundImageSize
+import util.shimmerEffect
 
 
 @Composable
@@ -49,7 +51,7 @@ fun RoundLabeledImage(
     ) {
         SubcomposeAsyncImage(
             modifier = Modifier
-                .size(90.dp)
+                .size(roundImageSize)
                 .clip(CircleShape),
             model = imageUrl,
             contentDescription = null,
@@ -58,7 +60,13 @@ fun RoundLabeledImage(
                 Text("Failed")
             },
             loading = {
-                Text("Loading...")
+//                Text("Loading...")
+                Box(
+                    modifier = Modifier
+                        .size(roundImageSize)
+                        .clip(CircleShape)
+                        .shimmerEffect()
+                )
             }
         )
         Text(
@@ -68,5 +76,8 @@ fun RoundLabeledImage(
     }
 
 }
+
+private fun String.getFirstName() : String  = this.split(" ")[0]
+
 
 
