@@ -28,14 +28,16 @@ import domain.AppLabeledImage
 
 @Composable
 fun MainScreen(
+    modifier: Modifier = Modifier,
     labeledImages: List<AppLabeledImage>
 ) {
     Column(
         verticalArrangement = Arrangement.SpaceAround,
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.verticalScroll(rememberScrollState())
+
     ) {
-        AppTopBar()
-        Spacer(Modifier.size(8.dp))
+//        AppTopBar()
+//        Spacer(Modifier.size(8.dp))
         RoundLabeledImageRow(
             labeledImages = labeledImages,
             modifier = Modifier.fillMaxWidth()
