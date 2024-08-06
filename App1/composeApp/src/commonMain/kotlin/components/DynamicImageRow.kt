@@ -34,7 +34,7 @@ fun DynamicImageRow(
             modifier = Modifier.fillMaxWidth().padding(12.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            labeledImages.take(displayedImages).forEach {
+            labeledImages.shuffled().take(displayedImages).forEach {
 
                 SmallerRoundCornerImage(it)
             }

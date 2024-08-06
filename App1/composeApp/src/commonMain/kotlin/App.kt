@@ -62,7 +62,6 @@ fun App(
 
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-
             topBar = {
                 AppTopBar()
             }

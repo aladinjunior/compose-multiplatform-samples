@@ -7,6 +7,7 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import kotlin.random.Random
 
 class KtorAppNetwork : AppNetworkDataSource {
 
@@ -19,7 +20,12 @@ class KtorAppNetwork : AppNetworkDataSource {
         }
     }
 
+    /**
+     * [getImages] fetches the images from api, generating a random number from 0 to 34
+     * to specify the API page's number
+     */
     override suspend fun getImages(): List<AppLabeledImage> {
-        return httpClient.get("https://picsum.photos/v2/list?page=2").body()
+        val randomPage = Random.nextInt(0, 34)
+        return httpClient.get("https://picsum.photos/v2/list?page=$randomPage").body()
     }
 }
