@@ -44,7 +44,8 @@ fun RoundLabeledImage(
 ) {
     Column(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         SubcomposeAsyncImage(
             modifier = Modifier
@@ -65,7 +66,6 @@ fun RoundLabeledImage(
             style = MaterialTheme.typography.bodySmall
         )
     }
-
 
 }
 

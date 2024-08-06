@@ -41,6 +41,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.androidx.activity.compose)
+            implementation (libs.accompanist.systemuicontroller)
 
         }
         commonMain.dependencies {
