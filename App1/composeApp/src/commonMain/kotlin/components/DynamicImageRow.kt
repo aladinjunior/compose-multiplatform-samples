@@ -26,8 +26,6 @@ fun DynamicImageRow(
 
         println("AMOUNT OF IMAGES: $displayedImages")
 
-
-
         Row(
             modifier = Modifier.fillMaxWidth().padding(12.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)

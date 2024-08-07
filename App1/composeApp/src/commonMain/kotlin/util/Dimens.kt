@@ -6,6 +6,7 @@ object Dimens {
 
     val smallerImageSize = 180.dp
     val roundImageSize = 90.dp
+    val imageRoundCornerSize = 30.dp
 
 
 }

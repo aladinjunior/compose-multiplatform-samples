@@ -1,6 +1,7 @@
 package components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,17 +16,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
 import domain.AppLabeledImage
 import util.Dimens.smallerImageSize
+import util.shimmerEffect
 
 @Composable
 fun RoundCornerImage(
     labeledImage: AppLabeledImage
 ) {
+
     Card(
         modifier = Modifier.fillMaxWidth().padding(12.dp),
         shape = RoundedCornerShape(30.dp),
@@ -41,7 +45,13 @@ fun RoundCornerImage(
                     Text("Failed to load images :(")
                 },
                 loading = {
-                    Text("Loading...")
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp)
+                            .clip(RoundedCornerShape(30.dp))
+                            .shimmerEffect()
+                    )
                 }
             )
             Button(
@@ -91,7 +101,12 @@ fun SmallerRoundCornerImage(
                     Text("Failed to load images :(")
                 },
                 loading = {
-                    Text("Loading...")
+                    Box(
+                        modifier = Modifier
+                            .size(smallerImageSize)
+                            .clip(RoundedCornerShape(30.dp))
+                            .shimmerEffect()
+                    )
                 }
             )
             Text(

@@ -60,7 +60,6 @@ fun RoundLabeledImage(
                 Text("Failed")
             },
             loading = {
-//                Text("Loading...")
                 Box(
                     modifier = Modifier
                         .size(roundImageSize)
